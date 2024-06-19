@@ -4,7 +4,7 @@
 const addBtn = document.getElementById("add-btn");
 const ul = document.getElementById("list");
 
-
+//add element
 addBtn.addEventListener("click",function (e){
 e.preventDefault();
 const li= document.createElement("li");
@@ -28,5 +28,13 @@ li.appendChild(input);
 ul.appendChild(li)
 inputValue.value = "";
 }
-})
+});
+//edit element
+ul.addEventListener("click", function(e){
+if(e.target.className === "fa fa-pencil-square-o"){
+e.target.parentNode.style.display = 'none';
+e.target.parentNode.nextElementSibling.style.display = 'block';
+e.target.parentNode.nextElementSibling.value = e.target.parentNode.previousElementSibling.textContent
+}
+});
 })();
