@@ -1,7 +1,3 @@
-'use strict';
-
-(()=>{
-const addBtn = document.getElementById("add-btn");
 const ul = document.getElementById("list");
 
 //add element
@@ -33,8 +29,27 @@ inputValue.value = "";
 ul.addEventListener("click", function(e){
 if(e.target.className === "fa fa-pencil-square-o"){
 e.target.parentNode.style.display = 'none';
-e.target.parentNode.nextElementSibling.style.display = 'block';
-e.target.parentNode.nextElementSibling.value = e.target.parentNode.previousElementSibling.textContent
+const noteInput = e.target.parentNode.nextElementSibling;
+const note = e.target.parentNode.previousElementSibling;
+noteInput.style.display = 'block';
+noteInput.value = note.textContent
+// update and delete
+noteInput.addEventListener("keypress", function(e){
+if(e.keyCode === 13){
+	if(noteInput.value !== ""){
+	note.textContent = noteInput.value;
+	noteInput.style.display = 'none';
+	noteInput.previousElementSibling.style.display = 'block';
+}else{
+	const li = noteInput.parentNode;
+	li.parentNode.removeChild(li);
+}
+}
+});
+}
+else if(e.target.className === "fa fa-times"){
+const p = e.target.parentNode;
+p.parentNode.parentNode.removeChild(p.parentNode)
 }
 });
 })();
