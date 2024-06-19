@@ -67,5 +67,20 @@ hideBtn.previousElementSibling.textContent = "Unhide Note"
 hideBtn.previousElementSibling.textContent = "Hide Note"
 ul.style.display = "block";
 }
+});
+
+//search text
+const searchBtn = document.querySelector("#search-note input");
+searchBtn.addEventListener("keyup",function(e){
+const searchText = e.target.value.toUpperCase();
+const notes = ul.getElementsByTagName("li");
+Array.from(notes).forEach(function(notes){
+const text = notes.firstElementChild.textContent;
+if(text.toUpperCase().indexOf(searchText) !== -1){
+notes.style.display = "block";
+}else{
+notes.style.display = "none";
+}
+})
 })
 })();
