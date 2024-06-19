@@ -1,3 +1,7 @@
+'use strict';
+
+(()=>{
+const addBtn = document.getElementById("add-btn");
 const ul = document.getElementById("list");
 
 //add element
@@ -52,4 +56,16 @@ const p = e.target.parentNode;
 p.parentNode.parentNode.removeChild(p.parentNode)
 }
 });
+// hide mode off and on
+const hideBtn = document.getElementById("hide");
+hideBtn.addEventListener("click",function(){
+
+if(hideBtn.checked){
+ul.style.display = "none";
+hideBtn.previousElementSibling.textContent = "Unhide Note"
+}else{
+hideBtn.previousElementSibling.textContent = "Hide Note"
+ul.style.display = "block";
+}
+})
 })();
